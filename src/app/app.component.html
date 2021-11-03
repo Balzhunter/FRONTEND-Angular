@@ -6,7 +6,7 @@
         <input type="text" class="large" placeholder="Enter Search" [(ngModel)]="searchValue" (ngModelChange)="onChangeEvent($event)" />
       </section>
       <div class="col-md-3"> 
-        <select [(ngModel)]="selectedValue" id="exampleFormControlSelect1" class="form-control" >
+        <select [(ngModel)]="selectedValue" id="exampleFormControlSelect1" class="form-control" (ngModelChange)="onSelectEvent($event)">
           <option *ngFor="let option of options" [value]="option.value">{{option.name}}</option>
         </select>
         

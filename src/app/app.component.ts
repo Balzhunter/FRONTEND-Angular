@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   searchValue: string;
   selectedValue: string;
   options : any[] = [];
+  filteredLines: any[] = [];
 
   constructor(private appService: AppService) {
     this.searchValue = '';
@@ -51,6 +52,38 @@ export class AppComponent implements OnInit {
     });
 
   }
+
+  onSelectEvent(event: any) {
+    // console.log("here")
+    // const newData = []
+
+    // const newGroup = this.lines.map((line)=>{
+    //   return line.invoiceNumber;
+    // })
+    
+    const groupBy = this.lines.reduce(this.reducerByInvoice, []);
+    console.log(groupBy);
+  }
+
+  reducerByInvoice(groupBy: any, el: any) {
+
+    if (Array.isArray(el)) {
+      return el.reduce(this.reducerByInvoice, groupBy);
+    } else {
+      const { invoiceNumber, ...rest } = el;
+      const group = groupBy.find((el: any) => el.invoiceNumber === invoiceNumber);
+      if (group) {
+        group.data.push(rest);
+      } else {
+        groupBy.push({
+          invoiceNumber,
+          data: [rest]
+        })
+      }
+      return groupBy;
+    }
+  }
+
 
   ngOnInit(): void {
     this.appService.getAll().subscribe((data: any) => {
