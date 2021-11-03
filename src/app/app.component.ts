@@ -10,14 +10,34 @@ export class AppComponent implements OnInit {
   lines: any[] = [];
   resultLines: any[] = [];
   searchValue: string;
+  selectedValue: string;
+  options : any[] = [];
 
   constructor(private appService: AppService) {
     this.searchValue = '';
+    this.selectedValue = '';
+    this.options = [
+      {
+        value: "invoice",
+        name : "By Invoice"
+      },
+      {
+        value: "distributor",
+        name : "By Distributor"
+      },
+      {
+        value: "customerLocation",
+        name : "By Customer Location"
+      },
+      {
+        value: "product",
+        name : "By Product"
+      }
+    ]
   }
 
   onChangeEvent(event: any) {
     this.resultLines = this.lines.filter((line) => {
-      // console.log(line.invoiceNumber.toString().includes(this.searchValue.toLocaleLowerCase()));
       return (
         line.invoiceNumber
           .toString()
@@ -29,7 +49,7 @@ export class AppComponent implements OnInit {
           .includes(this.searchValue.toLocaleLowerCase())
       );
     });
-    console.log(this.resultLines);
+
   }
 
   ngOnInit(): void {
@@ -37,5 +57,6 @@ export class AppComponent implements OnInit {
       this.lines = data;
       this.resultLines = this.lines;
     });
+    
   }
 }
