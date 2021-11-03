@@ -54,18 +54,29 @@ export class AppComponent implements OnInit {
   }
 
   onSelectEvent(event: any) {
-    // switch(){
+    switch(this.selectedValue){
+      case "invoice":
+        const groupByInvoice = this.lines.reduce(this.reducerByInvoice, []);
+        console.log("Grouped by Invoice", groupByInvoice);
 
-    // }
+        break;
+      case "distributor":
+        const groupByDistributor = this.lines.reduce(this.reducerByDistributor, []);
+        console.log("Grouped by Distributor", groupByDistributor);
+
+        break;
+      case "customerLocation":
+        const groupByCustomer = this.lines.reduce(this.reducerByCustomer, [], );
+        console.log("Grouped by Customer", groupByCustomer);
+
+        break;
+      case "product":
+        const groupByProduct = this.lines.reduce(this.reducerByProduct, [], );
+        console.log("Grouped by Product", groupByProduct);
+
+        break;
+    }
     console.log(this.selectedValue)
-    const groupByInvoice = this.lines.reduce(this.reducerByInvoice, []);
-    const groupByDistributor = this.lines.reduce(this.reducerByDistributor, []);
-    const groupByCustomer = this.lines.reduce(this.reducerByCustomer, [], );
-    const groupByProduct = this.lines.reduce(this.reducerByProduct, [], );
-    console.log("Grouped by Invoice", groupByInvoice);
-    console.log("Grouped by Distributor", groupByDistributor);
-    console.log("Grouped by Customer", groupByCustomer);
-    console.log("Grouped by Product", groupByProduct);
   }
 
   reducerByProduct(groupBy: any, el: any) {
