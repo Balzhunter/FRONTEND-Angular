@@ -54,15 +54,75 @@ export class AppComponent implements OnInit {
   }
 
   onSelectEvent(event: any) {
-    // console.log("here")
-    // const newData = []
+    // switch(){
 
-    // const newGroup = this.lines.map((line)=>{
-    //   return line.invoiceNumber;
-    // })
-    
-    const groupBy = this.lines.reduce(this.reducerByInvoice, []);
-    console.log(groupBy);
+    // }
+    console.log(this.selectedValue)
+    const groupByInvoice = this.lines.reduce(this.reducerByInvoice, []);
+    const groupByDistributor = this.lines.reduce(this.reducerByDistributor, []);
+    const groupByCustomer = this.lines.reduce(this.reducerByCustomer, [], );
+    const groupByProduct = this.lines.reduce(this.reducerByProduct, [], );
+    console.log("Grouped by Invoice", groupByInvoice);
+    console.log("Grouped by Distributor", groupByDistributor);
+    console.log("Grouped by Customer", groupByCustomer);
+    console.log("Grouped by Product", groupByProduct);
+  }
+
+  reducerByProduct(groupBy: any, el: any) {
+
+    if (Array.isArray(el)) {
+      return el.reduce(this.reducerByProduct, groupBy);
+    } else {
+      const { productCode, ...rest } = el;
+      const group = groupBy.find((el: any) => el.productCode === productCode);
+      if (group) {
+        group.data.push(rest);
+      } else {
+        groupBy.push({
+          productCode,
+          data: [rest]
+        })
+      }
+      return groupBy;
+    }
+  }
+
+  reducerByCustomer(groupBy: any, el: any) {
+
+    if (Array.isArray(el)) {
+      return el.reduce(this.reducerByCustomer, groupBy);
+    } else {
+      const { customerAddress, ...rest } = el;
+      const group = groupBy.find((el: any) => el.customerAddress === customerAddress);
+      if (group) {
+        group.data.push(rest);
+      } else {
+        groupBy.push({
+          customerAddress,
+          data: [rest]
+        })
+      }
+      return groupBy;
+    }
+  }
+
+  reducerByDistributor(groupBy: any, el: any) {
+
+    if (Array.isArray(el)) {
+      return el.reduce(this.reducerByDistributor, groupBy);
+    } else {
+      const { distributorAddress, ...rest } = el;
+      const group = groupBy.find((el: any) => el.distributorAddress === distributorAddress);
+      if (group) {
+        group.data.push(rest);
+      } else {
+        groupBy.push({
+          distributorAddress,
+          data: [rest]
+        })
+      }
+      return groupBy;
+    }
   }
 
   reducerByInvoice(groupBy: any, el: any) {
