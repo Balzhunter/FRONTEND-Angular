@@ -58,22 +58,22 @@ export class AppComponent implements OnInit {
       case "invoice":
         const groupByInvoice = this.lines.reduce(this.reducerByInvoice, []);
         console.log("Grouped by Invoice", groupByInvoice);
-
+        this.filteredLines = groupByInvoice;
         break;
       case "distributor":
         const groupByDistributor = this.lines.reduce(this.reducerByDistributor, []);
         console.log("Grouped by Distributor", groupByDistributor);
-
+        this.filteredLines = groupByDistributor;
         break;
       case "customerLocation":
         const groupByCustomer = this.lines.reduce(this.reducerByCustomer, [], );
         console.log("Grouped by Customer", groupByCustomer);
-
+        this.filteredLines = groupByCustomer;
         break;
       case "product":
         const groupByProduct = this.lines.reduce(this.reducerByProduct, [], );
         console.log("Grouped by Product", groupByProduct);
-
+        this.filteredLines = groupByProduct;
         break;
     }
     console.log(this.selectedValue)
@@ -84,14 +84,15 @@ export class AppComponent implements OnInit {
     if (Array.isArray(el)) {
       return el.reduce(this.reducerByProduct, groupBy);
     } else {
-      const { productCode, ...rest } = el;
+      const { productCode, productDescription } = el;
       const group = groupBy.find((el: any) => el.productCode === productCode);
       if (group) {
-        group.data.push(rest);
+        group.data.push(el);
       } else {
         groupBy.push({
           productCode,
-          data: [rest]
+          data: [el],
+          title: productDescription
         })
       }
       return groupBy;
@@ -103,14 +104,15 @@ export class AppComponent implements OnInit {
     if (Array.isArray(el)) {
       return el.reduce(this.reducerByCustomer, groupBy);
     } else {
-      const { customerAddress, ...rest } = el;
+      const { customerAddress } = el;
       const group = groupBy.find((el: any) => el.customerAddress === customerAddress);
       if (group) {
-        group.data.push(rest);
+        group.data.push(el);
       } else {
         groupBy.push({
           customerAddress,
-          data: [rest]
+          data: [el],
+          title: customerAddress
         })
       }
       return groupBy;
@@ -122,14 +124,15 @@ export class AppComponent implements OnInit {
     if (Array.isArray(el)) {
       return el.reduce(this.reducerByDistributor, groupBy);
     } else {
-      const { distributorAddress, ...rest } = el;
+      const { distributorAddress } = el;
       const group = groupBy.find((el: any) => el.distributorAddress === distributorAddress);
       if (group) {
-        group.data.push(rest);
+        group.data.push(el);
       } else {
         groupBy.push({
           distributorAddress,
-          data: [rest]
+          data: [el],
+          title: distributorAddress
         })
       }
       return groupBy;
@@ -141,14 +144,15 @@ export class AppComponent implements OnInit {
     if (Array.isArray(el)) {
       return el.reduce(this.reducerByInvoice, groupBy);
     } else {
-      const { invoiceNumber, ...rest } = el;
+      const { invoiceNumber } = el;
       const group = groupBy.find((el: any) => el.invoiceNumber === invoiceNumber);
       if (group) {
-        group.data.push(rest);
+        group.data.push(el);
       } else {
         groupBy.push({
           invoiceNumber,
-          data: [rest]
+          data: [el],
+          title: invoiceNumber
         })
       }
       return groupBy;
