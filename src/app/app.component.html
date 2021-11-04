@@ -1,19 +1,43 @@
 <div class="py-5 px-4">
-
   <div>
     <div class="col-md-12">
       <!-- <section class="layout-row align-items-center justify-content-center">
         <input type="text" class="large" placeholder="Enter Search" [(ngModel)]="searchValue" (ngModelChange)="onChangeEvent($event)" />
       </section> -->
-      <div class="col-md-3"> 
-        <select [(ngModel)]="selectedValue" id="exampleFormControlSelect1" class="form-control" (ngModelChange)="onSelectEvent($event)">
-          <option *ngFor="let option of options" [value]="option.value">{{option.name}}</option>
+      <div class="col-md-3">
+        <select
+          [(ngModel)]="selectedValue"
+          id="exampleFormControlSelect1"
+          class="form-control"
+          (ngModelChange)="onSelectEvent($event)"
+        >
+          <option *ngFor="let option of options" [value]="option.value">
+            {{ option.name }}
+          </option>
         </select>
       </div>
 
       <div *ngIf="selectedValue === ''">
-
         <h3>My Invoices List</h3>
+        
+        <div class="item-group">
+          <div class="item">Invoice #</div>
+          <div class="item">Invoice Date</div>
+          <div class="item">Distributor Name</div>
+          <div class="item">Distributor Address</div>
+          <div class="item">Customer Name</div>
+          <div class="item">Customer Address</div>
+          <div class="item">Manufacturer Name</div>
+          <div class="item">Manufacturer Address</div>
+          <div class="item">Product Code</div>
+          <div class="item">Product Description</div>
+          <div class="item">Unit of Measure</div>
+          <div class="item">Purchased Qty</div>
+          <div class="item">Purchased Weight</div>
+          <div class="item">Unit Price</div>
+          <div class="item">Total Price</div>
+        </div>
+        
         <div *ngFor="let line of resultLines" class="card">
           <div class="item-group">
             <div class="item">
@@ -63,15 +87,31 @@
             </div>
           </div>
         </div>
-
       </div>
 
       <div *ngIf="selectedValue !== ''">
-        
         <h3>My Invoices Grouped</h3>
+
+        <div class="item-group">
+          <div class="item">Invoice #</div>
+          <div class="item">Invoice Date</div>
+          <div class="item">Distributor Name</div>
+          <div class="item">Distributor Address</div>
+          <div class="item">Customer Name</div>
+          <div class="item">Customer Address</div>
+          <div class="item">Manufacturer Name</div>
+          <div class="item">Manufacturer Address</div>
+          <div class="item">Product Code</div>
+          <div class="item">Product Description</div>
+          <div class="item">Unit of Measure</div>
+          <div class="item">Purchased Qty</div>
+          <div class="item">Purchased Weight</div>
+          <div class="item">Unit Price</div>
+          <div class="item">Total Price</div>
+        </div>
+
         <div *ngFor="let groupedLine of filteredLines" class="card">
-          
-          <h4>{{groupedLine.title}}</h4>
+          <h4>{{ groupedLine.title }}</h4>
           <div *ngFor="let line of groupedLine.data" class="card">
             <div class="item-group">
               <div class="item">
@@ -120,13 +160,9 @@
                 {{ line.totalPrice }}
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
-      
     </div>
   </div>
-
 </div>
