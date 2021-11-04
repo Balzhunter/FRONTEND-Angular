@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+.item {
+  padding: 5px;
+}
+
+.item-group {
+  display: grid;
+  grid-template-columns: repeat(15,1fr);
+}

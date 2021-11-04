@@ -1,6 +1,6 @@
-<div class="py-5">
+<div class="py-5 px-1">
 
-  <div class="row">
+  <div>
     <div class="col-md-12">
       <!-- <section class="layout-row align-items-center justify-content-center">
         <input type="text" class="large" placeholder="Enter Search" [(ngModel)]="searchValue" (ngModelChange)="onChangeEvent($event)" />
@@ -15,50 +15,50 @@
 
         <h3>My Invoices List</h3>
         <div *ngFor="let line of resultLines" class="card">
-          <div class="d-flex">
-            <div class="col-md-1">
+          <div class="item-group">
+            <div class="item">
               {{ line.invoiceNumber }}
             </div>
-            <div class="col-md-1">
+            <div class="item">
               {{ line.invoiceDate }}
             </div>
-            <div class="col-md-1">
+            <div class="item">
               {{ line.distributorName }}
             </div>
-            <div class="col-md-1">
+            <div class="item">
               {{ line.distributorAddress }}
             </div>
-            <div class="col-md-1">
+            <div class="item">
               {{ line.customerName }}
             </div>
-            <div class="col-md-1">
+            <div class="item">
               {{ line.customerAddress }}
             </div>
-            <div class="col-md-1">
+            <div class="item">
               {{ line.manufacturerName }}
             </div>
-            <div class="col-md-1">
+            <div class="item">
               {{ line.manufacturerAddress }}
             </div>
-            <div class="col-md-1">
+            <div class="item">
               {{ line.productCode }}
             </div>
-            <div class="col-md-1">
+            <div class="item">
               {{ line.productDescription }}
             </div>
-            <div class="col-md-1">
+            <div class="item">
               {{ line.unitOfMeasure }}
             </div>
-            <div class="col-md-1">
+            <div class="item">
               {{ line.quantity }}
             </div>
-            <div class="col-md-1">
+            <div class="item">
               {{ line.weight }}
             </div>
-            <div class="col-md-1">
+            <div class="item">
               {{ line.unitPrice }}
             </div>
-            <div class="col-md-1">
+            <div class="item">
               {{ line.totalPrice }}
             </div>
           </div>
@@ -73,50 +73,50 @@
           
           <h4>{{groupedLine.title}}</h4>
           <div *ngFor="let line of groupedLine.data" class="card">
-            <div class="d-flex">
-              <div class="col-md-1">
+            <div class="item-group">
+              <div class="item">
                 {{ line.invoiceNumber }}
               </div>
-              <div class="col-md-1">
+              <div class="item">
                 {{ line.invoiceDate }}
               </div>
-              <div class="col-md-1">
+              <div class="item">
                 {{ line.distributorName }}
               </div>
-              <div class="col-md-1">
+              <div class="item">
                 {{ line.distributorAddress }}
               </div>
-              <div class="col-md-1">
+              <div class="item">
                 {{ line.customerName }}
               </div>
-              <div class="col-md-1">
+              <div class="item">
                 {{ line.customerAddress }}
               </div>
-              <div class="col-md-1">
+              <div class="item">
                 {{ line.manufacturerName }}
               </div>
-              <div class="col-md-1">
+              <div class="item">
                 {{ line.manufacturerAddress }}
               </div>
-              <div class="col-md-1">
+              <div class="item">
                 {{ line.productCode }}
               </div>
-              <div class="col-md-1">
+              <div class="item">
                 {{ line.productDescription }}
               </div>
-              <div class="col-md-1">
+              <div class="item">
                 {{ line.unitOfMeasure }}
               </div>
-              <div class="col-md-1">
+              <div class="item">
                 {{ line.quantity }}
               </div>
-              <div class="col-md-1">
+              <div class="item">
                 {{ line.weight }}
               </div>
-              <div class="col-md-1">
+              <div class="item">
                 {{ line.unitPrice }}
               </div>
-              <div class="col-md-1">
+              <div class="item">
                 {{ line.totalPrice }}
               </div>
             </div>
