@@ -19,6 +19,10 @@ export class AppComponent implements OnInit {
     this.selectedValue = '';
     this.options = [
       {
+        value: "",
+        name: "Select something"
+      },
+      {
         value: "invoice",
         name : "By Invoice"
       },
