@@ -12,62 +12,10 @@
         
         select value: {{selectedValue}}
       </div>
-      <h3>My Invoices List</h3>
-      <div *ngFor="let line of resultLines" class="card">
-        <div class="d-flex">
-          <div class="col-md-1">
-            {{ line.invoiceNumber }}
-          </div>
-          <div class="col-md-1">
-            {{ line.invoiceDate }}
-          </div>
-          <div class="col-md-1">
-            {{ line.distributorName }}
-          </div>
-          <div class="col-md-1">
-            {{ line.distributorAddress }}
-          </div>
-          <div class="col-md-1">
-            {{ line.customerName }}
-          </div>
-          <div class="col-md-1">
-            {{ line.customerAddress }}
-          </div>
-          <div class="col-md-1">
-            {{ line.manufacturerName }}
-          </div>
-          <div class="col-md-1">
-            {{ line.manufacturerAddress }}
-          </div>
-          <div class="col-md-1">
-            {{ line.productCode }}
-          </div>
-          <div class="col-md-1">
-            {{ line.productDescription }}
-          </div>
-          <div class="col-md-1">
-            {{ line.unitOfMeasure }}
-          </div>
-          <div class="col-md-1">
-            {{ line.quantity }}
-          </div>
-          <div class="col-md-1">
-            {{ line.weight }}
-          </div>
-          <div class="col-md-1">
-            {{ line.unitPrice }}
-          </div>
-          <div class="col-md-1">
-            {{ line.totalPrice }}
-          </div>
-        </div>
-      </div>
+      <div *ngIf="selectedValue === ''">
 
-      <h3>My Invoices Filtered</h3>
-      <div *ngFor="let groupedLine of filteredLines" class="card">
-        
-        <h4>{{groupedLine.title}}</h4>
-        <div *ngFor="let line of groupedLine.data" class="card">
+        <h3>My Invoices List</h3>
+        <div *ngFor="let line of resultLines" class="card">
           <div class="d-flex">
             <div class="col-md-1">
               {{ line.invoiceNumber }}
@@ -115,10 +63,70 @@
               {{ line.totalPrice }}
             </div>
           </div>
-
         </div>
+
       </div>
 
+      <div *ngIf="selectedValue !== ''">
+        
+        <h3>My Invoices Grouped</h3>
+        <div *ngFor="let groupedLine of filteredLines" class="card">
+          
+          <h4>{{groupedLine.title}}</h4>
+          <div *ngFor="let line of groupedLine.data" class="card">
+            <div class="d-flex">
+              <div class="col-md-1">
+                {{ line.invoiceNumber }}
+              </div>
+              <div class="col-md-1">
+                {{ line.invoiceDate }}
+              </div>
+              <div class="col-md-1">
+                {{ line.distributorName }}
+              </div>
+              <div class="col-md-1">
+                {{ line.distributorAddress }}
+              </div>
+              <div class="col-md-1">
+                {{ line.customerName }}
+              </div>
+              <div class="col-md-1">
+                {{ line.customerAddress }}
+              </div>
+              <div class="col-md-1">
+                {{ line.manufacturerName }}
+              </div>
+              <div class="col-md-1">
+                {{ line.manufacturerAddress }}
+              </div>
+              <div class="col-md-1">
+                {{ line.productCode }}
+              </div>
+              <div class="col-md-1">
+                {{ line.productDescription }}
+              </div>
+              <div class="col-md-1">
+                {{ line.unitOfMeasure }}
+              </div>
+              <div class="col-md-1">
+                {{ line.quantity }}
+              </div>
+              <div class="col-md-1">
+                {{ line.weight }}
+              </div>
+              <div class="col-md-1">
+                {{ line.unitPrice }}
+              </div>
+              <div class="col-md-1">
+                {{ line.totalPrice }}
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      
     </div>
   </div>
 
